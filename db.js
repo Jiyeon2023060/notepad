@@ -1,7 +1,8 @@
 import { createClient } from "@libsql/client";
 
-const url = process.env.TURSO_URL;
-const authToken = process.env.TURSO_TOKEN;
+// 환경변수에 줄바꿈/공백이 섞여 들어오는 경우가 있어 정리한다.
+const url = process.env.TURSO_URL?.trim();
+const authToken = process.env.TURSO_TOKEN?.trim();
 
 if (!url) {
   throw new Error("TURSO_URL 환경변수가 설정되지 않았습니다.");
