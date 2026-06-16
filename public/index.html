@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>메모장</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.snow.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <!-- 로그인 화면 -->
+    <div id="login" class="login-screen hidden">
+      <form id="login-form" class="login-box">
+        <h1>📒 메모장</h1>
+        <p>비밀번호를 입력하세요</p>
+        <input
+          id="password"
+          type="password"
+          placeholder="비밀번호"
+          autocomplete="current-password"
+        />
+        <button type="submit">로그인</button>
+        <div id="login-error" class="login-error"></div>
+      </form>
+    </div>
+
+    <!-- 메인 앱 -->
+    <div id="app" class="app hidden">
+      <!-- 사이드바: 노트북 -->
+      <aside class="sidebar">
+        <div class="brand">📒 메모장</div>
+        <button id="new-note-btn" class="new-note">＋ 새 노트</button>
+
+        <nav class="nav">
+          <div
+            class="nav-item active"
+            data-view="all"
+          >
+            <span>🗂️ 모든 노트</span>
+          </div>
+          <div class="nav-item" data-view="trash">
+            <span>🗑️ 휴지통</span>
+          </div>
+        </nav>
+
+        <div class="section-head">
+          <span>노트북</span>
+          <button id="new-notebook-btn" title="노트북 추가">＋</button>
+        </div>
+        <div id="notebook-list" class="notebook-list"></div>
+
+        <button id="logout-btn" class="logout">로그아웃</button>
+      </aside>
+
+      <!-- 노트 목록 -->
+      <section class="notelist">
+        <div class="notelist-head">
+          <input id="search" type="search" placeholder="🔍 검색..." />
+          <h2 id="list-title">모든 노트</h2>
+        </div>
+        <div id="notes" class="notes"></div>
+      </section>
+
+      <!-- 에디터 -->
+      <main class="editor-pane">
+        <div id="empty-state" class="empty-state">
+          <p>노트를 선택하거나 새로 만드세요.</p>
+        </div>
+        <div id="editor-wrap" class="editor-wrap hidden">
+          <div class="editor-toolbar-top">
+            <input
+              id="note-title"
+              class="note-title"
+              placeholder="제목 없음"
+            />
+            <div class="editor-actions">
+              <span id="save-status" class="save-status"></span>
+              <select id="notebook-select" class="notebook-select"></select>
+              <button id="pin-btn" title="고정">📌</button>
+              <button id="trash-btn" title="휴지통으로">🗑️</button>
+              <button id="restore-btn" class="hidden" title="복원">♻️ 복원</button>
+              <button id="delete-btn" class="hidden danger" title="영구 삭제">
+                ✕ 삭제
+              </button>
+            </div>
+          </div>
+          <div id="editor"></div>
+        </div>
+      </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"></script>
+    <script src="/app.js"></script>
+  </body>
+</html>

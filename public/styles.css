@@ -1,0 +1,349 @@
+:root {
+  --bg: #f6f7f9;
+  --panel: #ffffff;
+  --border: #e4e7eb;
+  --text: #1f2328;
+  --muted: #6b7280;
+  --accent: #2dbe60;
+  --accent-dark: #21964a;
+  --sidebar-bg: #2b3a42;
+  --sidebar-text: #cfd8dc;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  height: 100%;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Malgun Gothic",
+    sans-serif;
+  color: var(--text);
+  background: var(--bg);
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* ---- 로그인 ---- */
+.login-screen {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--sidebar-bg);
+}
+.login-box {
+  background: #fff;
+  padding: 40px;
+  border-radius: 12px;
+  width: 320px;
+  text-align: center;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+.login-box h1 {
+  margin: 0 0 8px;
+}
+.login-box p {
+  color: var(--muted);
+  margin: 0 0 20px;
+}
+.login-box input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 15px;
+  margin-bottom: 12px;
+}
+.login-box button {
+  width: 100%;
+  padding: 12px;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  cursor: pointer;
+}
+.login-box button:hover {
+  background: var(--accent-dark);
+}
+.login-error {
+  color: #e5484d;
+  font-size: 13px;
+  margin-top: 10px;
+  min-height: 18px;
+}
+
+/* ---- 레이아웃 ---- */
+.app {
+  display: grid;
+  grid-template-columns: 220px 320px 1fr;
+  height: 100vh;
+}
+
+/* ---- 사이드바 ---- */
+.sidebar {
+  background: var(--sidebar-bg);
+  color: var(--sidebar-text);
+  display: flex;
+  flex-direction: column;
+  padding: 16px 12px;
+  overflow-y: auto;
+}
+.brand {
+  font-size: 18px;
+  font-weight: 700;
+  color: #fff;
+  padding: 4px 8px 16px;
+}
+.new-note {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  margin-bottom: 16px;
+}
+.new-note:hover {
+  background: var(--accent-dark);
+}
+.nav-item,
+.notebook-item {
+  padding: 8px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+}
+.nav-item:hover,
+.notebook-item:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+.nav-item.active,
+.notebook-item.active {
+  background: rgba(45, 190, 96, 0.25);
+  color: #fff;
+}
+.section-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #8a99a3;
+  margin: 18px 8px 6px;
+}
+.section-head button {
+  background: none;
+  border: none;
+  color: #8a99a3;
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 1;
+}
+.section-head button:hover {
+  color: #fff;
+}
+.notebook-list {
+  flex: 1;
+}
+.notebook-item .count {
+  font-size: 12px;
+  color: #8a99a3;
+}
+.logout {
+  margin-top: 12px;
+  background: none;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: var(--sidebar-text);
+  padding: 8px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+}
+.logout:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* ---- 노트 목록 ---- */
+.notelist {
+  background: var(--panel);
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.notelist-head {
+  padding: 16px;
+  border-bottom: 1px solid var(--border);
+}
+.notelist-head input {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 14px;
+  margin-bottom: 12px;
+}
+.notelist-head h2 {
+  margin: 0;
+  font-size: 16px;
+}
+.notes {
+  flex: 1;
+  overflow-y: auto;
+}
+.note-card {
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--border);
+  cursor: pointer;
+}
+.note-card:hover {
+  background: #f0f4f8;
+}
+.note-card.active {
+  background: #e8f5ec;
+  border-left: 3px solid var(--accent);
+  padding-left: 13px;
+}
+.note-card .nc-title {
+  font-weight: 600;
+  font-size: 14px;
+  margin-bottom: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.note-card .nc-snippet {
+  font-size: 13px;
+  color: var(--muted);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.note-card .nc-meta {
+  font-size: 11px;
+  color: #9aa3ad;
+  margin-top: 6px;
+  display: flex;
+  gap: 8px;
+}
+.note-card .pin-dot {
+  color: var(--accent);
+}
+.empty-list {
+  padding: 40px 20px;
+  text-align: center;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+/* ---- 에디터 ---- */
+.editor-pane {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.empty-state {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--muted);
+}
+.editor-wrap {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.editor-toolbar-top {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 24px 8px;
+}
+.note-title {
+  flex: 1;
+  border: none;
+  font-size: 22px;
+  font-weight: 700;
+  outline: none;
+}
+.editor-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.editor-actions button {
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 6px 8px;
+  cursor: pointer;
+  font-size: 13px;
+}
+.editor-actions button:hover {
+  background: #f0f4f8;
+}
+.editor-actions button.danger {
+  color: #e5484d;
+  border-color: #f3c6c7;
+}
+.editor-actions button.pinned {
+  background: #e8f5ec;
+  border-color: var(--accent);
+}
+.notebook-select {
+  padding: 6px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-size: 13px;
+  max-width: 130px;
+}
+.save-status {
+  font-size: 12px;
+  color: var(--muted);
+  min-width: 56px;
+  text-align: right;
+}
+#editor {
+  flex: 1;
+  overflow-y: auto;
+  font-size: 15px;
+}
+.ql-container {
+  border: none !important;
+  font-size: 15px;
+}
+.ql-toolbar {
+  border-left: none !important;
+  border-right: none !important;
+  border-color: var(--border) !important;
+}
+.ql-editor {
+  padding: 16px 24px 60px;
+  min-height: 100%;
+}
+
+@media (max-width: 860px) {
+  .app {
+    grid-template-columns: 160px 1fr;
+  }
+  .editor-pane {
+    display: none;
+  }
+}
